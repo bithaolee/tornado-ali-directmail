@@ -1,16 +1,17 @@
 import tornado.ioloop
 import tornado.web
-import client
 from tornado import gen
+# import tornado_directmail
+from tornado_directmail.client import AliMail
 
 class MainHandler(tornado.web.RequestHandler):
     @gen.coroutine
     def get(self):
-        access_id = 'xxxxxxxxxxx'
-        access_secret = 'sssssss'
-        from_address = 'system@xxxx.com'
+        access_id = 'LTAIXj3iWYkXZTKV'
+        access_secret = 'VnGuSvcm8dUdvVKsKcwzpcWacgMM3f'
+        from_address = 'system@blockvita.com'
         from_alias = 'Test'
-        resp = yield client.AliMail(access_id, access_secret, from_address, from_alias).send('xxxxxxxx@qq.com', 'subject', 'content')
+        resp = yield AliMail(access_id, access_secret, from_address, from_alias).send('haolee1990@qq.com', 'subject', 'content')
         print(resp)
         self.write("Hello, world")
 
